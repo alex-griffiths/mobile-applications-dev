@@ -1,0 +1,87 @@
+package com.example.basicactivitytest;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.NumberPicker;
+import android.widget.TextView;
+import android.widget.TimePicker;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
+
+public class FirstFragment extends Fragment {
+    private TextView message;
+    private Button button;
+    private NumberPicker numPicker;
+    private CalendarView calendar;
+    private TimePicker timePicker;
+    String selectedDate;
+    @Override
+    public View onCreateView(
+            LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState
+    ) {
+
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_first, container, false);
+    }
+
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        message = view.findViewById(R.id.textView);
+        button = view.findViewById(R.id.button);
+        numPicker = view.findViewById(R.id.numberPicker);
+        calendar = view.findViewById(R.id.calendarView);
+        timePicker = view.findViewById(R.id.timePicker);
+        numPicker.setMinValue(0);
+        numPicker.setMaxValue(10);
+        numPicker.setWrapSelectorWheel(true);
+        numPicker.setValue(5);
+
+        numPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                // TODO Auto-generated method stub
+
+                String msg = "New value is: " + String.valueOf(newVal);
+                Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
+            }
+        });
+        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month,
+                                            int dayOfMonth) {
+
+                selectedDate = String.valueOf(dayOfMonth)+ "/" +String.valueOf(month + 1)+ "/" + String.valueOf(year);
+            }
+        });
+        view.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String text = "You chose ";
+                text = text + numPicker.getValue() + " and "
+                        + String.valueOf(timePicker.getHour()) + " H " + String.valueOf(timePicker.getMinute()) + " M "
+                        + selectedDate;
+                message.setText(text);
+            }
+        });
+         /*  If you want to get current date, not selected date use the following code, do not need to use listener
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String selectedDate = sdf.format(new Date(calendar.getDate()));*/
+
+        view.findViewById(R.id.button_first).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(FirstFragment.this)
+                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+            }
+        });
+    }
+

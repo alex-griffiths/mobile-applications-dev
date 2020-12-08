@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.mod3_3.MainActivity">
+    <item
+        android:id="@+id/itemHam"
+        android:orderInCategory="100"
+        android:title="Ham"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/itemPineapple"
+        android:orderInCategory="100"
+        android:title="Pineapple"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/itemAnchovies"
+        android:orderInCategory="100"
+        android:title="Anchovies"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/itemOlive"
+        android:orderInCategory="100"
+        android:title="Olives"
+        app:showAsAction="always" />
+</menu>

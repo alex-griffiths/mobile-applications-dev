@@ -1,0 +1,37 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="70dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select the type of hotel" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RadioButton android:id="@+id/radio_fivestar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Five Start" />
+        <RadioButton android:id="@+id/radio_fourstar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Four Start" />
+        <RadioButton android:id="@+id/radio_threestar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Three Start" />
+    </RadioGroup>
+
+
+    <TextView
+        android:id="@+id/dispMsg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
